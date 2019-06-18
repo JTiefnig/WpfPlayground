@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="CustomSliderControl.PositionSlider"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CustomSliderControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="400">
+    <Grid Background="Transparent">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="40"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+
+    
+      <TextBlock MinWidth="20" HorizontalAlignment="Left" Text="{Binding MinimumPosition}" />
+      <TextBlock HorizontalAlignment="Right" Text="{Binding MaximumPosition}" TextAlignment="Right" />
+
+
+
+    <!--<Border Width="400"
+            x:Name="BasicRect"
+      Grid.Row="1"
+      Grid.Column="1"
+      CornerRadius="10"
+      BorderBrush="Black"
+      BorderThickness="1"
+      HorizontalAlignment="Stretch"
+      Background="Transparent" >-->
+
+    <Border Width="400"
+            x:Name="BasicRect"
+      Grid.Row="1"
+      Grid.Column="1"
+      CornerRadius="10"
+      HorizontalAlignment="Stretch"
+      Background="Transparent" >
+
+
+    </Border>
+
+      
+    <Rectangle Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="2" Fill="Black"> </Rectangle>
+    
+      
+    <Border
+      x:Name="Slider"
+      Grid.Row="1"
+      Width="60"
+      Margin="4"
+      Background="Gray"
+     
+      CornerRadius="10">
+      <Grid>
+        
+        <!--PopUp Bubble-->
+        
+        <!--<Popup x:Name="TargetPositonPopup" Placement="Top" HorizontalAlignment="Center" AllowsTransparency="True">
+          <Grid HorizontalAlignment="Center" Width="{Binding ElementName=Slider, Path=Width}">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="30"/>
+              <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <Rectangle 
+              Fill="White"
+              Width="50" RadiusX="10" RadiusY="10"/>
+            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Foreground="Black" Text="{Binding TargetPositon, StringFormat=N0}"></TextBlock>
+            <Path Grid.Row="1"  HorizontalAlignment="Center" Fill="White"
+                  Data="M 0,0 30,0 15,15 "></Path>
+
+          </Grid>
+
+        </Popup>-->
+      </Grid>
+    </Border>
+
+
+  </Grid>
+</UserControl>
