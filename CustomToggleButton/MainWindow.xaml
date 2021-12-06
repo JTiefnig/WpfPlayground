@@ -1,0 +1,27 @@
+﻿<Window x:Class="CustomToggleButton.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CustomToggleButton"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Background="Gray">
+    <Grid>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+      <!--Checkbox styling test-->
+      <CheckBox Style="{StaticResource CheckBoxStyle1}" Content="johannes" />
+      <!-- Toggle button APPLE Styling Test-->
+      <ToggleButton Height="30" Style="{StaticResource AppleToggleButton}" Margin="10" />
+      <!-- Mode Toggle button-->
+      <StackPanel Margin="3">
+        <RadioButton GroupName="ContorlMode" Content="NONE"/>
+        <RadioButton GroupName="ContorlMode" Content="HardwareLink"/>
+        <RadioButton GroupName="ContorlMode1" Content="Joystick"/>
+      </StackPanel>
+      
+    </StackPanel>
+    
+
+  </Grid>
+</Window>

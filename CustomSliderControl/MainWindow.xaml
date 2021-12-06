@@ -22,13 +22,10 @@
 
 
 
-    
-    
-
     <StackPanel Orientation="Horizontal">
       <Button Name="testbutton" Click="Testbutton_Click">Random Target Pos</Button>
       <Button Name="button2" Click="Button2_Click">list changed test</Button>
-      <Button Name="DeleteButton" Click="DeleteButton_Click"> Delete </Button>
+      <Button Name="DeleteButton" Click="DeleteButton_Click">Delete</Button>
     </StackPanel>
 
     <TabControl Grid.Row="1">
@@ -153,10 +150,7 @@
         <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Actuators}">
           <ListView.ItemsPanel>
             <ItemsPanelTemplate>
-              <WrapPanel >
-         
-                
-              </WrapPanel>
+              <WrapPanel ></WrapPanel>
             </ItemsPanelTemplate>
           </ListView.ItemsPanel>
 
@@ -164,26 +158,20 @@
             <DataTemplate>
               <Border Margin="3" BorderBrush="Blue" CornerRadius="4" BorderThickness="1">
                 <StackPanel Height="60" Width="60" Margin="4">
-                  <fa:ImageAwesome Icon="Gear" Height="10" HorizontalAlignment="Left"></fa:ImageAwesome>
-                <TextBlock Text="Position" Foreground="Gray" FontSize="7"/>
-                <TextBlock Text="{Binding Position}"/>
+                  <fa:ImageAwesome Icon="FortAwesome" Height="10" HorizontalAlignment="Left"></fa:ImageAwesome>
+                  <TextBlock Text="Position" Foreground="Gray" FontSize="7"/>
+                  <TextBlock Text="{Binding Position}"/>
                   <TextBlock Text="Target" Foreground="Gray" FontSize="7"/>
                   <TextBlock Text="{Binding TargetPositon}"/>
                 </StackPanel>
               </Border>
-
-              
-              
             </DataTemplate>
-            
           </ListView.ItemTemplate>
 
 
           <ListView.Resources>
-
-
             
-              <Style TargetType="{x:Type ListViewItem}">
+            <Style TargetType="{x:Type ListViewItem}">
               <Setter Property="Template">
                 <Setter.Value>
                   <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -198,11 +186,10 @@
 
 
                         <Canvas x:Name="notch" Visibility="Hidden">
-                          <Path Grid.Row="1"  HorizontalAlignment="Center" Fill="Green" Opacity="1"
-                  Data="M 0,0 30,0 0, 30 "/>
+                          <Path Grid.Row="1"  HorizontalAlignment="Center" Fill="Green" Opacity="1" Data="M 0,0 30,0 0, 30 "/>
 
 
-                          <fa:ImageAwesome Foreground="White" Margin="4" Icon="Check" Height="10" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                          <fa:ImageAwesome Foreground="White" Margin="3" Icon="Check" Height="12" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                         </Canvas>
                         
 
@@ -276,59 +263,71 @@
 
 
       </TabItem>
+
+      
+       <!-- Tabcontrol for storryboard animatoni-->
+      <TabItem>
+        <TabItem.Header>
+          <StackPanel Orientation="Horizontal">
+            <fa:ImageAwesome Height="10" VerticalAlignment="Stretch" Icon="PlayCircle"/>
+            <TextBlock >Something</TextBlock>
+          </StackPanel>
+        </TabItem.Header>
+
+        <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+           <Rectangle  Name="myrect"
+              Canvas.Top="100"
+              Canvas.Left="10"
+              Height="100"
+              Width="100"
+              Stroke="Black"
+              StrokeThickness="5">
+                  <Rectangle.RenderTransform>
+                    <TranslateTransform x:Name="AnimatedTranslateTransform" />
+                  </Rectangle.RenderTransform>
+                  <Rectangle.Resources>
+      </Rectangle.Resources>
+             
+              <Rectangle.Triggers>
+                <EventTrigger RoutedEvent="Rectangle.Loaded">
+                  <BeginStoryboard>
+                    
+                    <Storyboard x:Name="mystoryboard">
+              
+                      <DoubleAnimationUsingKeyFrames
+                        Storyboard.TargetName="AnimatedTranslateTransform"
+                        Storyboard.TargetProperty="X"
+                        Duration="0:0:1"
+                        RepeatBehavior="Forever">
+                
+                        <LinearDoubleKeyFrame Value="200" KeyTime="0:0:2" />
+
+                        <SplineDoubleKeyFrame KeySpline="0.5,0.0 0.5,0.00" Value="300" KeyTime="0:0:2" />
+
+                        <DiscreteDoubleKeyFrame Value="200" KeyTime="0:0:2" />
+
+
+                        <SplineDoubleKeyFrame KeySpline="0.5,0.1 0.1,0.5" Value="200" KeyTime="0:0:0.5" />
+
+                        <SplineDoubleKeyFrame KeySpline="0.5,0.1 0.1,0.5" Value="0" KeyTime="0:0:1" />
+
+                      </DoubleAnimationUsingKeyFrames>
+              
+                    </Storyboard>
+                  </BeginStoryboard>
+                </EventTrigger>
+              </Rectangle.Triggers>
+
+           
+                </Rectangle>
+
+        </Canvas>
+       
+      </TabItem>
       
     </TabControl>
     
 
-    <!--<Rectangle  Name="myrect"
-      Canvas.Top="100"
-      Canvas.Left="10"
-      Height="100"
-      Width="100"
-      Stroke="Black"
-      StrokeThickness="5">
-      <Rectangle.RenderTransform>
-        <TranslateTransform x:Name="AnimatedTranslateTransform" />
-      </Rectangle.RenderTransform>-->
-
-      <!--<Rectangle.Resources>
-        
-      
-            <Storyboard x:Key="mystory" x:Name="mystoryboard">
-
-              --><!-- Animate the TranslateTransform.X property using 3 KeyFrames
-                   which animates the rectangle along a straight line. 
-                   This animation repeats indefinitely. --><!--
-              <DoubleAnimationUsingKeyFrames
-                Storyboard.TargetName="AnimatedTranslateTransform"
-                Storyboard.TargetProperty="X"
-                Duration="0:0:1"
-                RepeatBehavior="Forever">
-
-                --><!-- Using a LinearDoubleKeyFrame, the rectangle moves 
-                     steadily from its starting position to 500 over 
-                     the first 3 seconds.  -->
-                <!--<LinearDoubleKeyFrame Value="200" KeyTime="0:0:2" />-->
-
-                <!--<SplineDoubleKeyFrame KeySpline="0.5,0.0 0.5,0.00" Value="300" KeyTime="0:0:2" />-->
-
-                <!-- Using a DiscreteDoubleKeyFrame, the rectangle suddenly 
-                     appears at 400 after the fourth second of the animation. -->
-                <!--<DiscreteDoubleKeyFrame Value="200" KeyTime="0:0:2" />-->
-
-                <!-- Using a SplineDoubleKeyFrame, the rectangle moves 
-                     back to its starting point. The
-                     animation starts out slowly at first and then speeds up. 
-                     This KeyFrame ends after the 6th
-                     second. --><!--
-
-                <SplineDoubleKeyFrame KeySpline="0.5,0.1 0.1,0.5" Value="200" KeyTime="0:0:0.5" />
-
-                <SplineDoubleKeyFrame KeySpline="0.5,0.1 0.1,0.5" Value="0" KeyTime="0:0:1" />
-              </DoubleAnimationUsingKeyFrames>
-            </Storyboard>
-      </Rectangle.Resources>
-    </Rectangle>-->
 
 
 
